@@ -6,6 +6,7 @@ use App;
 use Auth;
 use Redirect;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class Auth0IndexController extends Controller
 {
@@ -42,10 +43,16 @@ class Auth0IndexController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
+        $user = User::find(Auth::user()->id);
+        return view('profile')->with('user',$user);
+    }
+    public function dashboard()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+        $user = User::find(Auth::user()->id);
 
-        return view('profile')->with(
-            'user',
-            print_r(Auth::user()->getUserInfo(), true)
-        );
+        return view('dashboard')->with('user',$user);
     }
 }

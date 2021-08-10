@@ -26,7 +26,7 @@
                     </form>
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ route('profile') }}" class="btn btn-light action-button" role="button">Profile</a>
+                            <a href="{{ route('dashboard') }}" class="btn btn-light action-button" role="button">Dashboard</a>
                             <a href="{{ route('logout') }}" id="qsLogoutBtn" class="btn btn-light action-button" role="button">Logout</a>
                         @else
                             <a href="{{ route('login') }}" id="qsLoginBtn" class="btn btn-light action-button" role="button">Login/Signup</a>
