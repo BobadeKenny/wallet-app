@@ -25,12 +25,17 @@
                         <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field"></label></div>
                     </form>
                     @if (Route::has('login'))
+                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                         @auth
-                            <a href="{{ route('dashboard') }}" class="btn btn-light action-button" role="button">Dashboard</a>
-                            <a href="{{ route('logout') }}" id="qsLogoutBtn" class="btn btn-light action-button" role="button">Logout</a>
+                            <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
                         @else
-                            <a href="{{ route('login') }}" id="qsLoginBtn" class="btn btn-light action-button" role="button">Login/Signup</a>
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            @endif
                         @endauth
+                    </div>
                     @endif
                 </div>
               

@@ -70,9 +70,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'users' => [
-            'driver' => 'auth0'
-        ],
+       
 
         // 'users' => [
         //     'driver' => 'database',

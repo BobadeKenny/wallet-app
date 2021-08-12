@@ -12,19 +12,20 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+    
     public function updateUser()
     {
         $user = User::find(Auth::user()->id);
         $username = request('username');
         $email = request('email');
-        $firstname = request('firstname');
-        $lastname = request('lastname');
+        // $firstname = request('firstname');
+        // $lastname = request('lastname');
         if($username){
-            $userbyusername = User::where('username', $username)->first();
+            $userbyusername = User::where('name', $username)->first();
             if($userbyusername){
                 return view('success')->with('message','This username has already been taken.');
             } else {
-                $user->username = $username;
+                $user->name = $username;
             }
         }
         if($email){
@@ -35,12 +36,12 @@ class UserController extends Controller
                 $user->email = $email;
             }
         }
-        if($firstname){
-            $user->firstname = $firstname;
-        }
-        if($lastname){
-            $user->lastname = $lastname;
-        }
+        // if($firstname){
+        //     $user->firstname = $firstname;
+        // }
+        // if($lastname){
+        //     $user->lastname = $lastname;
+        // }
         $user->save();
         return view('success')->with('message','User details updated successfully.');
 

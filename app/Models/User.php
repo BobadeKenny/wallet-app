@@ -8,13 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use Bavix\Wallet\Traits\HasWallet; 
+
 use Bavix\Wallet\Interfaces\Wallet; 
 
-
-
-class User extends Authenticatable implements Wallet{ 
-    use HasWallet; 
+class User extends Authenticatable implements Wallet
+{
     use HasFactory, Notifiable;
+    use HasWallet;
 
     /**
      * The attributes that are mass assignable.
@@ -22,10 +22,9 @@ class User extends Authenticatable implements Wallet{
      * @var array
      */
     protected $fillable = [
+        'name',
         'email',
-        'sub',
-        'updated_at',
-        'created_at',
+        'password',
     ];
 
     /**
@@ -34,6 +33,7 @@ class User extends Authenticatable implements Wallet{
      * @var array
      */
     protected $hidden = [
+        'password',
         'remember_token',
     ];
 

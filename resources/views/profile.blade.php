@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="{{$user['username']}}" onkeyup="search_username(this.value)" name="username">
+                                <label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="{{auth()->user()->name}}" onkeyup="search_username(this.value)" name="username">
                                 <p id="results" class="bg-warning"></p>
                             </div>
  
@@ -20,19 +20,19 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email" onkeyup="search_email(this.value)" placeholder="{{$user['email']}}" name="email">
+                                <label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email" onkeyup="search_email(this.value)" placeholder="{{auth()->user()->email}}" name="email">
                                 <p id="results_email" class="bg-warning"></p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col">
-                            <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="firstname" placeholder="{{$user['firstname']}}" name="firstname"></div>
+                            <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="firstname" placeholder="{{auth()->user()->firstname}}" name="firstname"></div>
                         </div>
                         <div class="col">
-                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="lastname" placeholder="{{$user['lastname']}}" name="lastname"></div>
+                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="lastname" placeholder="{{auth()->user()->lastname}}" name="lastname"></div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
                 </form>
             </div>

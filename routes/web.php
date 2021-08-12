@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Auth0\Login\Auth0Controller;
-use App\Http\Controllers\Auth\Auth0IndexController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/auth0/callback', [Auth0Controller::class, 'callback'])->name('auth0-callback');
-Route::get('/login', [Auth0IndexController::class, 'login'])->name('login');
-Route::get('/logout', [Auth0IndexController::class, 'logout'])->name('logout');
-Route::get('/profile', [Auth0IndexController::class, 'profile'])->name('profile');
-Route::get('/dashboard', [Auth0IndexController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+
 Route::get('/withdraw', [App\Http\Controllers\BalanceController::class, "withdraw"]);
 Route::post('/withdrawal', [App\Http\Controllers\BalanceController::class, "withdrawal"]);
 Route::get('/deposit', [App\Http\Controllers\BalanceController::class, "deposit"]);
@@ -30,6 +30,7 @@ Route::post('/fund', [App\Http\Controllers\BalanceController::class, "fund"]);
 Route::get('/transfer', [App\Http\Controllers\BalanceController::class, "transfer"]);
 Route::post('/maketransfer', [App\Http\Controllers\BalanceController::class, "maketransfer"]);
 Route::get('/transactions', [App\Http\Controllers\BalanceController::class, "transactions"]);
+Route::get('/profile', [App\Http\Controllers\ViewController::class, "profile"]);
 Route::post('/updateuser', [App\Http\Controllers\UserController::class, "updateUser"]);
 Route::get('/searchusername', [App\Http\Controllers\SearchController::class, "searchUsername"]);
 Route::get('/searchemail', [App\Http\Controllers\SearchController::class, "searchEmail"]);

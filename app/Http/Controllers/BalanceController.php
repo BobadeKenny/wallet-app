@@ -28,12 +28,6 @@ class BalanceController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        // $id = request('id');
-        // $deposit = request('amt');
-        // $user = User::find($id);
-        // $user->deposit($deposit);
-        // $user->save();
-        // return redirect()->route('profile');
         return view('deposit');
     }
 
@@ -66,6 +60,9 @@ class BalanceController extends Controller
         }
         $user = User::find(Auth::user()->id);
         $withdrawal = request('amount');
+        if ($withdrawal <= 0) {
+            return view('success')->with('message','You cannot withdraw negative amounts.');
+        }
         if ($user->balance >= $withdrawal){
             $user->withdraw($withdrawal);
             $user->save();
@@ -80,25 +77,6 @@ class BalanceController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-    //     $id = request('id');
-    //     $rid = request('rid');
-    //     $user = request('name');
-    //     $transfer = request('amt');
-    //     $sender = User::find($id);
-    //     $receiver = User::where('name', $rid)->first();
-    //     if($user == $rid){
-    //         return('You cannot transfer to yourself.');
-    //     }
-    //     if(! $receiver){
-    //         return('User not found. Please check username and try again.');
-    //     }
-    //     if ($sender->balance >= $transfer){
-    //         $sender->transfer($receiver, $transfer);
-    //         return redirect()->route('profile');
-    //     } else {
-    //         return "Error please try again";
-    //     }
-    // }
     return view('transfer');
     }
 
@@ -110,7 +88,7 @@ class BalanceController extends Controller
         $transfer = request('amount');
         $username = request('username');
         $sender = User::find(Auth::user()->id);
-        $receiver = User::where('username', $username)->first();
+        $receiver = User::where('name', $username)->first();
         if($sender == $receiver){
             return view('success')->with('message','You cannot transfer to yourself.');
         }
