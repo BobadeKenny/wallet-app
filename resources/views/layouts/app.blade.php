@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/fontawesome5-overrides.min.css">
+   
     
 </head>
 
@@ -28,8 +29,11 @@
                     <li class="nav-item"><a class="nav-link" href="/withdraw"><i class="fas fa-money"></i><span>Withdraw</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/deposit"><i class="fas fa-credit-card"></i><span>Deposit</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/transfer"><i class="fas fa-paper-plane"></i><span>Transfer</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/logout"><i class="far fa-user-circle"></i><span>Logout</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="far fa-user-circle"></i><span>Logout</span></a></li>
                 </ul>
+                <form method="post" action="/logout" id="logout">
+                        @csrf
+                </form>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
